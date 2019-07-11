@@ -55,8 +55,8 @@ public class SkinResources {
         }
         //在皮肤包中不一定就是 当前程序的 id
         //获取对应id 在当前的名称 colorPrimary
-        String resName = mAppResources.getResourceEntryName(resId);
-        String resType = mAppResources.getResourceTypeName(resId);
+        String resName = mAppResources.getResourceEntryName(resId); // resName: "my_textColor"
+        String resType = mAppResources.getResourceTypeName(resId); // resType: "color"
         int skinId = mSkinResources.getIdentifier(resName, resType, mSkinPkgName);
         return skinId;
     }
@@ -101,6 +101,7 @@ public class SkinResources {
      * @return
      */
     public Object getBackground(int resId) {
+
         String resourceTypeName = mAppResources.getResourceTypeName(resId);
 
         if (resourceTypeName.equals("color")) {

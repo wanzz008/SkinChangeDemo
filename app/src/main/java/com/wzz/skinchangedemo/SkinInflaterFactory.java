@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.wzz.skinchangedemo.utils.SkinThemeUtils;
+
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,9 +23,11 @@ public class SkinInflaterFactory implements LayoutInflater.Factory2, Observer {
 
     //属性处理类
     private SkinAttribute skinAttribute;
+    private Activity activity ;
 
 
     public SkinInflaterFactory(Activity activity, Typeface typeface) {
+        this.activity = activity ;
         this.skinAttribute = new SkinAttribute( typeface );
     }
 
@@ -130,11 +134,16 @@ public class SkinInflaterFactory implements LayoutInflater.Factory2, Observer {
 
     /**
      * 观察者 当被观察者调用notifyObservers()时做出改变
+     * 这里是当SkinManager中发出换肤的通知时，此处进行换肤
      * @param o
      * @param arg
      */
     @Override
     public void update(Observable o, Object arg) {
+
+        SkinThemeUtils.updateStatusBarColor( activity );
+
+        skinAttribute.applySkin();
 
     }
 }

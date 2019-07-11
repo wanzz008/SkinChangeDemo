@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--状态栏-->
+    <color name="colorPrimaryDark">#CD0</color>
+    <!--标题栏-->
+    <color name="colorPrimary">#F2F</color>
+
+    <color name="colorAccent">#D81B60</color>
+
+
+    <color name="my_textColor">#F00</color>
+    <color name="my_buttonColor">#0CD</color>
+    <color name="my_ImageColor">#F0F</color>
+    <color name="my_viewColor">#677</color>
+
+</resources>

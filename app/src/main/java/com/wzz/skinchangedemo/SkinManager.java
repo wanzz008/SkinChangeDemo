@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.text.TextUtils;
 
 import com.wzz.skinchangedemo.utils.SkinPreference;
 import com.wzz.skinchangedemo.utils.SkinResources;
@@ -57,41 +58,45 @@ public class SkinManager extends Observable {
      * @param skinPath 皮肤路径 如果为空则使用默认皮肤
      */
     public void loadSkin(String skinPath){
+
+        if (TextUtils.isEmpty( skinPath )){
+
+            SkinResources.getInstance().reset();
+            SkinPreference.getInstance().setSkin( null );
+
+        }
         try {
             //反射创建AssetManager 与 Resource
 
             AssetManager assetManager = AssetManager.class.newInstance();
-            Method addAssertPath = assetManager.getClass().getMethod("addAssertPath", String.class);
+            Method addAssertPath = assetManager.getClass().getMethod("addAssetPath", String.class);
             addAssertPath.invoke( assetManager , skinPath ) ;
 
             Resources resources = mContext.getResources();
             //根据当前的显示与配置(横竖屏、语言等)创建Resources
             Resources skinResource = new Resources(assetManager, resources.getDisplayMetrics(),
                     resources.getConfiguration());
+
             // 保存当前的皮肤状态
             SkinPreference.getInstance().setSkin( skinPath );
+
             // 获取外部apk（皮肤包） 包名
             PackageManager packageManager = mContext.getPackageManager();
             PackageInfo info = packageManager.getPackageArchiveInfo(skinPath, PackageManager.GET_ACTIVITIES);
             String packageName = info.packageName;
+
             SkinResources.getInstance().applySkin( skinResource , packageName );
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         //通知采集的View 更新皮肤
         //被观察者改变 通知所有观察者
         setChanged();
         notifyObservers(  );
 
     }
-
-
-
-
-
-
-
 
 
 }

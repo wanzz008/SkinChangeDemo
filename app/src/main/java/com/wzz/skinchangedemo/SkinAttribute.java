@@ -61,7 +61,7 @@ public class SkinAttribute {
         for (int i = 0; i < attrs.getAttributeCount(); i++) {
             //获得属性名  mAttributes
             String attributeName = attrs.getAttributeName(i); // attributeName为background、layout_width等
-            L.e("   " + attributeName);
+//            L.e("   " + attributeName);
             if (mAttributes.contains(attributeName)) {
                 String attributeValue = attrs.getAttributeValue(i);  //attributeValue为 @2130968615等
                 // 如果是color的 以#开头表示写死的颜色 不可用于换肤
@@ -76,7 +76,7 @@ public class SkinAttribute {
                     // 正常以 @ 开头
                     resId = Integer.parseInt(attributeValue.substring(1));
                 }
-                L.e("   " + attributeName + " = " + attributeValue);
+                L.e("   " + attributeName + " = " + attributeValue + "       resId:" + resId );
                 SkinPair skinPair = new SkinPair(attributeName, resId); // 属性名和值 的对象
                 mSkinPars.add(skinPair);
             }

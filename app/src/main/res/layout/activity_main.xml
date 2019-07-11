@@ -7,22 +7,41 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+    <EditText android:layout_width="100dp" android:layout_height="wrap_content"
+
+    />
+
+    <Button android:layout_width="wrap_content"
+            android:background="@color/my_buttonColor"
+            android:layout_height="wrap_content"
+    android:text="换肤"
+            android:onClick="change"
+    />
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:background="@color/my_buttonColor"
+            android:layout_marginTop="5dp"
+            android:text="还原"
+            android:onClick="reset"
+    />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:textSize="15sp"
-        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/my_textColor"
         />
 
     <ImageView
-        android:src="@drawable/ic_launcher_background"
-        android:background="#000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/picture"
+        android:background="@color/my_ImageColor"
+        android:layout_width="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="100dp"/>
 
     <com.wzz.skinchangedemo.MyView
-        android:background="#000"
+        android:background="@color/my_viewColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
