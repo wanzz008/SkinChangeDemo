@@ -61,8 +61,10 @@ public class SkinManager extends Observable {
 
         if (TextUtils.isEmpty( skinPath )){
 
+            //清空资源管理器， 皮肤资源属性等
             SkinResources.getInstance().reset();
-            SkinPreference.getInstance().setSkin( null );
+            // 记录使用默认皮肤
+            SkinPreference.getInstance().setSkin( "" );
 
         }
         try {

@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 刚进入就换肤
         SkinManager.getInstance().loadSkin( SkinPreference.getInstance().getSkin() );
 
     }
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void change(View view) {
+        /**
+         * 加载外部皮肤包 获取属性 进行更改控件颜色和值
+         */
         SkinManager.getInstance().loadSkin(Environment.getExternalStorageDirectory() + "/skin.skin");
     }
 }
